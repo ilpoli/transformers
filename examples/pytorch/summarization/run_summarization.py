@@ -202,13 +202,13 @@ class DataTrainingArguments:
             "help": "Number of beams to use for evaluation. This argument will be passed to ``model.generate``, "
             "which is used during ``evaluate`` and ``predict``."
         },
-    ),
+    )
     min_length: Optional[int] = field(
         default=5,
-    ),
+    )
     length_penalty: Optional[int] = field(
         default=1.0,
-    ),
+    )
     ignore_pad_token_for_loss: bool = field(
         default=True,
         metadata={
