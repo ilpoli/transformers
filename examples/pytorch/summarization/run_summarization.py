@@ -202,7 +202,13 @@ class DataTrainingArguments:
             "help": "Number of beams to use for evaluation. This argument will be passed to ``model.generate``, "
             "which is used during ``evaluate`` and ``predict``."
         },
-    )
+    ),
+    min_length: Optional[int] = field(
+        default=5,
+    ),
+    length_penalty: Optional[int] = field(
+        default=1.0,
+    ),
     ignore_pad_token_for_loss: bool = field(
         default=True,
         metadata={
@@ -360,6 +366,13 @@ def main():
         revision=model_args.model_revision,
         use_auth_token=True if model_args.use_auth_token else None,
     )
+   
+    model.config.min_length = data_args.min_length
+    model.config.num_beams = data_args.num_beams
+    model.config.length_penalty = data_args.length_penalty
+    model.config.no_repeat_ngram_size = 3
+    model.config.early_stopping = True
+    model.config.do_sample = False
 
     model.resize_token_embeddings(len(tokenizer))
 
