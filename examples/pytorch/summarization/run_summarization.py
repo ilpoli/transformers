@@ -197,7 +197,7 @@ class DataTrainingArguments:
         },
     )
     num_beams: Optional[int] = field(
-        default=None,
+        default=5,
         metadata={
             "help": "Number of beams to use for evaluation. This argument will be passed to ``model.generate``, "
             "which is used during ``evaluate`` and ``predict``."
@@ -546,6 +546,8 @@ def main():
         data_collator=data_collator,
         compute_metrics=compute_metrics if training_args.predict_with_generate else None,
     )
+    
+    print(trainer)
 
     # Training
     if training_args.do_train:
