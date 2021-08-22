@@ -546,8 +546,6 @@ def main():
         data_collator=data_collator,
         compute_metrics=compute_metrics if training_args.predict_with_generate else None,
     )
-    
-    print('trainer', trainer.lr_scheduler)
 
     # Training
     if training_args.do_train:
