@@ -547,7 +547,7 @@ def main():
         compute_metrics=compute_metrics if training_args.predict_with_generate else None,
     )
     
-    print(trainer.lr_scheduler)
+    print('trainer', trainer.lr_scheduler)
 
     # Training
     if training_args.do_train:
