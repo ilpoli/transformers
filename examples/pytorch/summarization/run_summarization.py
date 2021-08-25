@@ -367,9 +367,11 @@ def main():
         use_auth_token=True if model_args.use_auth_token else None,
     )
    
+    print('model.config', model.config)
     model.config.min_length = data_args.min_length
     model.config.num_beams = data_args.num_beams
     model.config.length_penalty = data_args.length_penalty
+    model.config.max_length = 50
     model.config.no_repeat_ngram_size = 3
     model.config.early_stopping = True
     model.config.do_sample = False
