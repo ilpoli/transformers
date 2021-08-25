@@ -376,7 +376,7 @@ def main():
     model.config.early_stopping = True
     model.config.do_sample = False
     
-    model.config.task_specific_params['summarization'].length_penalty = data_args.length_penalty
+    model.config.task_specific_params['summarization']['length_penalty'] = data_args.length_penalty
     
     model.resize_token_embeddings(len(tokenizer))
 
