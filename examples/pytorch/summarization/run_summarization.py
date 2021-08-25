@@ -518,6 +518,7 @@ def main():
         return preds, labels
 
     def compute_metrics(eval_preds):
+        print(eval_preds)
         preds, labels = eval_preds
         if isinstance(preds, tuple):
             preds = preds[0]
