@@ -174,6 +174,8 @@ class Seq2SeqTrainer(Trainer):
             "early_stopping": True,
         }
 
+        print(gen_kwargs)
+        
         generated_tokens = self.model.generate(
             inputs["input_ids"],
             attention_mask=inputs["attention_mask"],
