@@ -367,7 +367,7 @@ def main():
         use_auth_token=True if model_args.use_auth_token else None,
     )
    
-    print('model.config', model.config)
+    
     model.config.min_length = data_args.min_length
     model.config.num_beams = data_args.num_beams
     model.config.length_penalty = data_args.length_penalty
@@ -375,7 +375,9 @@ def main():
     model.config.no_repeat_ngram_size = 3
     model.config.early_stopping = True
     model.config.do_sample = False
-
+    
+    model.config.task_specific_params.summarization.length_penalty = data_args.length_penalty
+    
     model.resize_token_embeddings(len(tokenizer))
 
     if model.config.decoder_start_token_id is None:
@@ -538,6 +540,8 @@ def main():
         result = {k: round(v, 4) for k, v in result.items()}
         return result
 
+    print('model.config', model.config)
+    
     # Initialize our Trainer
     trainer = Seq2SeqTrainer(
         model=model,
