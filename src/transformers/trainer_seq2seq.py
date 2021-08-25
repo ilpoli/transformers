@@ -167,7 +167,7 @@ class Seq2SeqTrainer(Trainer):
             #"num_beams": self._num_beams if self._num_beams is not None else self.model.config.num_beams,
             "synced_gpus": True if is_deepspeed_zero3_enabled() else False,
             "min_length": 5,
-            "max_length": 50,
+            "max_length": 5,
             "no_repeat_ngram_size": 3,
             "num_beams": 5,
             "length_penalty": 1.0,
