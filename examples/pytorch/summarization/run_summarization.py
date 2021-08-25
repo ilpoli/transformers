@@ -370,7 +370,7 @@ def main():
     
     model.config.min_length = data_args.min_length
     model.config.num_beams = data_args.num_beams
-    model.config.length_penalty = data_args.length_penalty
+    #model.config.length_penalty = data_args.length_penalty
     model.config.max_length = 50
     model.config.no_repeat_ngram_size = 3
     model.config.early_stopping = True
