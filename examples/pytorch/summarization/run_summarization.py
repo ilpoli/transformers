@@ -530,7 +530,6 @@ def main():
         # Some simple post-processing
         decoded_preds, decoded_labels = postprocess_text(decoded_preds, decoded_labels)
 
-        print('\n', decoded_preds)
         result = metric.compute(predictions=decoded_preds, references=decoded_labels, use_stemmer=False)
         # Extract a few results from ROUGE
         result = {key: value.mid.fmeasure * 100 for key, value in result.items()}
@@ -539,8 +538,6 @@ def main():
         result["gen_len"] = np.mean(prediction_lens)
         result = {k: round(v, 4) for k, v in result.items()}
         return result
-
-    print('model.config', model.config)
     
     # Initialize our Trainer
     trainer = Seq2SeqTrainer(
