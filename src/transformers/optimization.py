@@ -460,6 +460,11 @@ class Adafactor(Optimizer):
         relative_step=False,
         warmup_init=False,
     ):
+        print('lr', lr)
+        print('scale_parameter', scale_parameter)
+        print('relative_step', relative_step)
+        print('warmup_init', warmup_init)
+        
         require_version("torch>=1.5.0")  # add_ with alpha
         if lr is not None and relative_step:
             raise ValueError("Cannot combine manual `lr` and `relative_step=True` options")
