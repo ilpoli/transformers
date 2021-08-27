@@ -768,7 +768,7 @@ class Trainer:
         and/or :obj:`create_scheduler`) in a subclass.
         """
         self.create_optimizer()
-        self.create_scheduler(num_training_steps)
+        #self.create_scheduler(num_training_steps)
 
     def create_optimizer(self):
         """
