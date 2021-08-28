@@ -768,7 +768,7 @@ class Trainer:
         and/or :obj:`create_scheduler`) in a subclass.
         """
         self.create_optimizer()
-        #self.create_scheduler(num_training_steps)
+        self.create_scheduler(num_training_steps)
 
     def create_optimizer(self):
         """
@@ -793,14 +793,14 @@ class Trainer:
             optimizer_cls = Adafactor if self.args.adafactor else AdamW
             if self.args.adafactor:
                 optimizer_cls = Adafactor
-                optimizer_kwargs = {"scale_parameter": True, "relative_step": True, "warmup_init": True, "lr": None}
+                optimizer_kwargs = {"scale_parameter": False, "relative_step": False}
             else:
                 optimizer_cls = AdamW
                 optimizer_kwargs = {
                     "betas": (self.args.adam_beta1, self.args.adam_beta2),
                     "eps": self.args.adam_epsilon,
                 }
-            #optimizer_kwargs["lr"] = self.args.learning_rate
+            optimizer_kwargs["lr"] = self.args.learning_rate
             if self.sharded_ddp == ShardedDDPOption.SIMPLE:
                 self.optimizer = OSS(
                     params=optimizer_grouped_parameters,
