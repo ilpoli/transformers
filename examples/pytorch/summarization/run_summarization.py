@@ -219,7 +219,7 @@ class DataTrainingArguments:
         default=None, metadata={"help": "A prefix to add before every source text (useful for T5 models)."}
     )
     use_stemmer: bool = field(
-        default=True
+        default=False
     )
 
     def __post_init__(self):
