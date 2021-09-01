@@ -206,7 +206,7 @@ class DataTrainingArguments:
     min_length: Optional[int] = field(
         default=5,
     )
-    length_penalty: Optional[int] = field(
+    length_penalty: Optional[float] = field(
         default=1.0,
     )
     ignore_pad_token_for_loss: bool = field(
